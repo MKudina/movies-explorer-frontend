@@ -1,0 +1,53 @@
+/* Подключение стиля normalize.css */
+
+@import url(./vendor/normalize.css);
+
+/* Подключение стиля шрифтов */
+
+@import url(./vendor/fonts/fonts.css);
+
+/* Подключение блока page */
+
+@import url(./components/App/App.css);
+
+/* Подключение блока header */
+
+@import url(./components/Header/Header.css);
+
+/* Подключение блока main */
+
+@import url(./components/Main/Main.css);
+@import url(./components/Main/Promo/Promo.css);
+@import url(./components/Main/NavTab/NavTab.css);
+@import url(./components/Main/AboutProject/AboutProject.css);
+@import url(./components/Main/Techs/Techs.css);
+@import url(./components/Main/AboutMe/AboutMe.css);
+@import url(./components/Main/Portfolio/Portfolio.css);
+
+/* Подключение блока footer */
+
+@import url(./components/Footer/Footer.css);
+
+/* Подключение блока register */
+
+@import url(./components/Register/Register.css);
+
+/* Подключение блока login */
+
+@import url(./components/Login/Login.css);
+
+/* Подключение блока 404 */
+
+@import url(./components/404/404.css);
+
+/* Подключение блока movies */
+
+@import url(./components/Movies/Movies.css);
+@import url(./components/Movies/SearchForm/SearchForm.css);
+@import url(./components/Movies/SearchForm/FilterCheckbox/FilterCheckbox.css);
+@import url(./components/Movies/MoviesCardList/MoviesCardList.css);
+@import url(./components/Movies/MoviesCard/MoviesCard.css);
+
+/* Подключение блока profile */
+
+@import url(./components/Profile/Profile.css);

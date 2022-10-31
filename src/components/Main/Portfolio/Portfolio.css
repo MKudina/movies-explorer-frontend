@@ -1,0 +1,109 @@
+.portfolio {
+    max-width: 1280px;
+    max-height: 425px;
+    margin: 0px 70px;
+    padding: 0px;
+}
+
+.portfolio__title {
+    margin: 0px 0px 50px;
+    padding: 0px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    color: #8B8B8B;
+}
+
+.portfolio__list {
+    margin: 0px;
+    padding: 0px 0px 106px;
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    gap: 20px;
+}
+
+.portfolio__list-element {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-decoration: none;
+    color: white;
+}
+
+.portfolio__list-element:nth-child(-n+2){
+    border-bottom: 1px solid #424242;
+}
+
+.portfolio__list-link {
+    max-height: 50px;
+    margin: 0px 0px 19px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 50px;
+    letter-spacing: -0.04em;
+    text-decoration: none;
+    color: white;
+}
+
+.portfolio__list-arrow {
+    width: 29px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../../../images/PortfolioArrow.svg);
+}
+
+@media screen and (max-width:1023px) {
+    .portfolio {
+        max-height: 390px;
+        margin: 0px 50px;
+    }
+
+    .portfolio__list {
+        padding: 0px 0px 90px;
+        gap: 20px;
+    }
+
+    .portfolio__list-element:nth-child(-n+2){
+        border-bottom: 1px solid #E6E6E6;
+    }
+
+    .portfolio__list-link {
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .portfolio {
+        max-height: 294px;
+        margin: 0px 14px;
+    }
+
+    .portfolio__title {
+        margin: 0px 0px 40px;
+        font-size: 14px;
+    }
+
+    .portfolio__list {
+        padding: 0px 0px 51px;
+    }
+
+    .portfolio__list-element:nth-child(-n+2){
+        border-bottom: 1px solid #E6E6E6;
+    }
+
+    .portfolio__list-link  {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .portfolio__list-arrow {
+        width: 18px;
+        height: 28px;
+    }
+
+        
+}
