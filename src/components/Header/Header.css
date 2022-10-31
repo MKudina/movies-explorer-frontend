@@ -74,7 +74,7 @@
     font-size: 14px;
 }
 
-.header__menu-bar {
+.header__menu-bar-button {
     display: none;
     width: 44px;
     height: 44px;
@@ -86,8 +86,29 @@
     cursor: pointer;
 }
 
-.header__menu-bar_main {
+.header__menu-bar-button_active {
     background-color: #073042;
+}
+
+.header__menu-bar {
+    max-width: 520px;
+    max-height: 1024px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    top: 0px;
+    right: 0px;
+}
+
+.header__menu-bar-button-close {
+    width: 22px;
+    height: 22px;
+    border: none;
+    background-color: #313131;
+    background-image: url(../../images/HeaderCross.svg);
+    background-position: center;
+    background-repeat: none;
 }
 
 @media screen and (max-width:1023px) {
@@ -95,7 +116,7 @@
         padding: 18px 50px;
     }
 
-    .header__menu-bar {
+    .header__menu-bar-button {
         display: block;
     }
 

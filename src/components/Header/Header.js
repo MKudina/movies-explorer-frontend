@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 
 function Header(){
-    const isLoggedIn = true;
+    const isLoggedIn = false;
     const location = useLocation();
 
     return (
@@ -29,7 +29,19 @@ function Header(){
                     </Link>
                 </>
             )}
-            <button type='button' className={`header__menu-bar ${location.pathname === '/' && 'header__menu-bar_main'}`} />
+            <button type='button' className={`header__menu-bar-button ${location.pathname === '/' && 'header__menu-bar-button_active'}`} />
+            <div className='header__menu-bar'>
+                <button type='button' className='header__menu-bar-button-close' />
+                <Link to='/movies' className='header__button header__button_movies'>
+                    {'Фильмы'}
+                </Link>
+                <Link to='saved-movies' className='header__button header__button_saved-movies'>
+                    {'Сохраненные фильмы'}
+                </Link>
+                <Link to='/profile' className='header__button header__button_profile'>
+                    {'Аккаунт'}
+                </Link>
+            </div>
         </header>
     );
 }

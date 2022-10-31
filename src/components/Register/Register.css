@@ -1,7 +1,10 @@
 .register {
     max-width: 396px;
+    max-height: 700px;
     margin: 0px auto;
     padding: 70px 0px 0px;
+    display: flex;
+    flex-direction: column;
 }
 
 .register__logo {
@@ -39,8 +42,13 @@
     color: white;
     background-color: #2F2F2F;
     border: none;
+    box-sizing: border-box;
     outline: none;
     border-radius: 8px;
+}
+
+.register__input:focus {
+    outline: 1px solid #6d6868;
 }
 
 .register__input-label {
@@ -63,6 +71,7 @@
     background-color: #4285F4;
     opacity: 0.96;
     border-radius: 3px;
+    color: white;
 }
 
 .register__login{
@@ -89,8 +98,6 @@
     .register {
         max-width: 260px;
         padding: 56px 0px 0px;
-        display: flex;
-        flex-direction: column;
         align-items: center;
     }
 

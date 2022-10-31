@@ -11,9 +11,6 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 
 function App() {
-
-  
-
   return (
     <div className='page__background'>
       <div className='page'>
@@ -26,9 +23,12 @@ function App() {
           <Route path='/movies'>
             <Header />
             <Movies />
+            <Footer />
           </Route>
           <Route path='/saved-movies'>
+            <Header />
             <SavedMovies />
+            <Footer />
           </Route>
           <Route path='/profile'>
             <Header />
