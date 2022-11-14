@@ -54,7 +54,10 @@
     margin: 0px 0px 15px;
     background-color: #4285F4;
     background-image: url(../../../images/MovieArrow.svg);
+}
 
+.searchform__button_submit:disabled {
+    background-color: #5a5c5f;
 }
 
 @media screen and (max-width:1023px) {

@@ -1,15 +1,18 @@
-import imagesCard from '../../../images/MovieCard.png'
-
-function MoviesCard({ name, link, duration}) {
+function MoviesCard({ movie, deleteMovie }) {
+    async function handleDelete(){
+        deleteMovie(movie);
+    }
 
     return (
         <div className="movies-card">
-            <img src={imagesCard} className='movies-card__image' alt="Постер фильма"/>
+            <a href={movie.trailerLink} className='movies-card__link' target='__blank' >
+                <img src={movie.image} className='movies-card__image' alt={movie.nameRU}/>
+            </a>
             <div className="movies-card__element">
-                <h2 className="movies-card__title">{name}33 слова о дизайне</h2>
-                <input type='checkbox' className="movies-card__checkbox"/>
+                <h2 className="movies-card__title">{movie.nameRU}</h2>
+                <input type='checkbox' className="movies-card__like movies-card__like_liked" onClick={handleDelete} />
             </div>
-            <p className="movies-card__duration">{duration}1ч42м</p>
+            <p className="movies-card__duration">{movie.duration}</p>
         </div>
     )
 }
