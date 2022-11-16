@@ -1,4 +1,6 @@
+import { useCallback } from "react";
 import { useState } from "react";
+import isEmail from 'validator/lib/isEmail';
 
 //хук управления формой и валидации формы
 export function useFormWithValidation() {
@@ -10,7 +12,6 @@ export function useFormWithValidation() {
   const [isPasswordValid, setIsPasswordValid] = useState(false);
 
   const handleChange = (event) => {
-
     const target = event.target;
     const name = target.name;
     const value = target.value;
@@ -19,14 +20,26 @@ export function useFormWithValidation() {
     if (target.closest("input").name === 'name') {
         setIsNameValid(target.closest("input").checkValidity())
     }
-    if (target.closest("input").name === 'email') {
+    if (target.closest("input").name === 'email' && isEmail(value)) {
         setIsEmailValid(target.closest("input").checkValidity())
     }
     if (target.closest("input").name === 'password') {
         setIsPasswordValid(target.closest("input").checkValidity())
     }
+    if (name === 'email' && !isEmail(value)) {
+      setErrors({ ...errors, email: 'Некорректная почта.' });
+    }
     setIsValid(target.closest("form").checkValidity());
   };
 
-  return { values, handleChange, errors, isValid, isNameValid, isEmailValid, isPasswordValid, setValues, setErrors };
+  const resetForm = useCallback(
+    (newValues = {}, newErrors = {}, newIsValid = false) => {
+      setValues(newValues);
+      setErrors(newErrors);
+      setIsValid(newIsValid);
+    },
+    [setValues, setErrors, setIsValid]
+  );
+
+  return { values, handleChange, errors, isValid, isNameValid, isEmailValid, isPasswordValid, setValues, setErrors, resetForm };
 }

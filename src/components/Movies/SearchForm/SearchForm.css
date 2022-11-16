@@ -3,10 +3,11 @@
     max-height: 217px;
     margin: 0px auto 0px;
     padding: 70px 0px 0px;
+    text-align: center;
 }
 
 .searchform__form {
-    margin: 0px 0px 30px;
+    margin: 0px 0px 5px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -44,6 +45,16 @@
     outline: none;
     background-color: #202020;
     color: #8B8B8B;
+}
+
+.searchform__not-found {
+    height: 12px;
+    margin: 0px 0px 13px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: red;
 }
 
 .searchform__input:focus {

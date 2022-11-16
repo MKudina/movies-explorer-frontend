@@ -51,19 +51,24 @@ function Register({setLoggedIn}) {
                 <label htmlFor='input-name' className='register__input-label'>Имя</label>
                 <input type='text' className={`register__input ${!isNameValid && 'register__input-error'}`} 
                     name='name' id='input-name' onChange={handleChange} minLength='2' maxLength='20' required />
+                <span className="register__span-inputs-error">
+                    {error || errors.name}</span>
 
                 <label htmlFor='input-email' className='register__input-label'>E-mail</label>
-                <input type='email' className={`register__input ${!isEmailValid && 'register__input-error'}`} 
+                <input type='email' className={`register__input ${!isEmailValid || errors.email ? 'register__input-error' : ''}`} 
                     name='email' id='input-email' onChange={handleChange} required />
+                <span className="register__span-inputs-error">
+                    {error || errors.email }</span>
 
                 <label htmlFor='input-password' className='register__input-label'>Пароль</label>
                 <input type='password' className={`register__input ${!isPasswordValid && 'register__input-error'}`}
-                    name='password' id='input-password' minLength="8" onChange={handleChange} required />
-                    
+                    name='password' id='input-password' minLength="8" onChange={handleChange} required />  
                 <span className="register__span-inputs-error">
-                    {error || errors.name || errors.email || errors.password}</span>
+                    {error || errors.password}</span>
+
                 <button type='submit' className='register__submit'
-                    disabled={!isValid || !values.name || !values.email || !values.password}>Зарегистрироваться</button>
+                    disabled={ error || errors.name || errors.email || errors.password || !isValid || 
+                            !values.name || !values.email || !values.password}>Зарегистрироваться</button>
                 <div className='register__login'>
                     Уже зарегистрированы?&nbsp;
                     <Link to='/sign-in' className='register__login-link'>

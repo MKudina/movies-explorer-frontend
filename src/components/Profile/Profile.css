@@ -59,10 +59,6 @@
     border-bottom: 1px solid #6d6868;
 }
 
-.profile__input-error {
-    color: red;
-}
-
 .profile__label-input {
     width: 410px;
     margin: 0px;
@@ -101,6 +97,7 @@
 
 .profile__submit:disabled {
     color: #625e5e;
+    opacity: 1;
 }
 
 .profile__logout {
@@ -122,7 +119,7 @@
 }
 
 .profile__span-inputs-error {
-    height: 24px;
+    max-height: 24px;
     color: red;
     font-style: normal;
     font-weight: 400;

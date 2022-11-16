@@ -10,7 +10,7 @@ function MoviesCard({ movie, deleteMovie }) {
             </a>
             <div className="movies-card__element">
                 <h2 className="movies-card__title">{movie.nameRU}</h2>
-                <input type='checkbox' className="movies-card__like movies-card__like_liked" onClick={handleDelete} />
+                <input type='checkbox' className="movies-card__delete" onClick={handleDelete} />
             </div>
             <p className="movies-card__duration">{movie.duration}</p>
         </div>

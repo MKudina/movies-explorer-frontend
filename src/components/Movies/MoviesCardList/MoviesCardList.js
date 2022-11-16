@@ -21,7 +21,7 @@ function MoviesCardList({ isMovies, saveMovie, deleteMovie }) {
         } else if (window.innerWidth >= 768) {
             setNumberOfFilms(numberOfFilms + 2);
         } else {
-            setNumberOfFilms(numberOfFilms + 1);
+            setNumberOfFilms(numberOfFilms + 2);
         }
     }
 

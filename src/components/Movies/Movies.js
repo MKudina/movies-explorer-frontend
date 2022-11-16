@@ -13,9 +13,7 @@ function Movies({ isMovies, saveMovie, searchMovie, typeSearchValue, onSubmitSea
                         isLoanding={isLoanding} />
             { isLoanding ? (
                 <Preloader />
-            ) : !isLoanding && typeSearchValue.length === 0 ? (
-                <div className="movies__not-found">{'Введине название фильма'}</div>
-            ): !isLoanding && isMovies.length === 0 ? (
+            ) : !isLoanding && isMovies.length === 0 ? (
                 <div className="movies__not-found">{'Фильм не найден'}</div>
             )  : !isLoanding && isMovies.length > 0 && (
                 <MoviesCardList isMovies={isMovies} saveMovie={saveMovie}

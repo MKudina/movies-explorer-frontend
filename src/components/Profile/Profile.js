@@ -6,7 +6,7 @@ import { apiMain } from '../../utils/MainApi';
 function Profile({ setCurrentUser, logout }){
 
     const currentUser = useContext(CurrentUserContext);
-    const { values, handleChange, errors, isValid, isNameValid, isEmailValid } = useFormWithValidation();
+    const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [error, setError] = useState('')
@@ -35,7 +35,7 @@ function Profile({ setCurrentUser, logout }){
                     setResults(false)
                 },
                 5 * 1000
-              );
+                );            
         } catch(err) {
             if (err.indexOf('400') !== -1) {
                 setError('Вы ввели неправильный email.');
@@ -50,27 +50,35 @@ function Profile({ setCurrentUser, logout }){
         }
     }
 
+    useEffect(() => {
+        if (currentUser) {
+          resetForm(currentUser, {}, true);
+        }
+      }, [currentUser, resetForm]);
+
     return (
         <div className="profile">
             <h2 className="profile__title">{`Привет, ${currentUser.name}!`}</h2>
             <form className="profile__form" onSubmit={handleSubmit} noValidate>
                 <label htmlFor="input-name" className="profile__label-input">
                     Имя
-                <input type='text' name='name' className={`profile__input ${!isNameValid && 'profile__input-error'}`} id="input-name" 
-                    placeholder={name} minLength='2' maxLength='20' onChange={handleChange} />
+                <input type='text' name='name' className={`profile__input`} id="input-name" 
+                    value={values.name ?? currentUser.name} minLength='2' maxLength='20'required onChange={handleChange} />
                 </label>
+
+                <span className='profile__span-inputs-error'>{error || errors.name}</span>
 
                 <label htmlFor="input-email" className="profile__label-input">
                     E-mail
-                <input type='email' name='email' className={`profile__input ${!isEmailValid && 'profile__input-error'}`} id="input-email" 
-                    placeholder={email} onChange={handleChange} />
+                <input type='email' name='email' className={`profile__input`} id="input-email" 
+                    value={values.email ?? currentUser.email} required onChange={handleChange} />
                 </label>
 
-                <span className='profile__span-inputs-error'>{error || errors.name || errors.email}</span>
+                <span className='profile__span-inputs-error'>{error || errors.email}</span>
                 <span className={`profile__span-results ${results && "profile__span-results_active"}`}>{'Результаты успешно изменены!'}</span>
 
                 <button type="submit" className="profile__submit" 
-                    disabled={!isValid}>
+                    disabled={  !isValid || (currentUser.name === values.name && currentUser.email === values.email)}>
                         {'Редактировать'}
                 </button>
             
