@@ -32,45 +32,35 @@ function App() {
   const history = useHistory();
 
   useEffect(() => {
-    async function checkUser(){
-      try {
         if(isLoggedIn){
-          if(isSavesMovies.length === 0){
-            await apiMain.getSavesMovies()
+            apiMain.getSavesMovies()
             .then((response) => {
               localStorage.setItem('allSavedMovies', JSON.stringify(response.movie));
               setIsSavesMovies(response.movie);
               setFilterSavedMovies(response.movie);
               setFilterSavedDurationMovies(response.movie);
             })
-          }
-            if(filterDurationMovie.length > 0){
-              setFilterDurationMovie(filterDurationMovie)
-            }
+            .catch ((err) => {
+              console.log(err)
+            })
         }
-      } catch(err){
-          console.log(err);
-      }
-    } checkUser()
-  }, [isLoggedIn, filterDurationMovie, searchValue, isSavesMovies, setSearchValue, 
-      setIsSavesMovies, setFilterSavedDurationMovies, setFilterDurationMovie])
+  }, [isLoggedIn, searchValue, setSearchValue, setIsSavesMovies, setFilterDurationMovie, currentUser])
 
     useEffect(() => {
-      function checkToken(){
         const jwt = localStorage.getItem('token');
         if(jwt){
+          setIsLoanding(true);
           apiMain.checkAuth(jwt).then((res) => {
             if(res){
               setLoggedIn(true)
-            } else {
-              logout();
             }
           })
-          .catch(err => console.log(err));
+          .catch(err => console.log(err))
+          .finally(() => {
+            setIsLoanding(false);
+          });
         } 
-      }
-      checkToken();
-    })
+    }, [setIsLoanding] )
 
     //Запрос на фильмы
 
@@ -245,10 +235,12 @@ function App() {
                 logout={logout}/>
              </Route>
             <Route path='/sign-in'>
-              { isLoggedIn ? <Redirect to='/' /> : <Login setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} /> }
+              { isLoggedIn ? <Redirect to='/' /> : <Login setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} 
+              setIsLoanding={setIsLoanding} isLoanding={isLoanding} /> }
             </Route>
             <Route path='/sign-up'>
-              { isLoggedIn ? <Redirect to='/' /> : <Register setLoggedIn={setLoggedIn} /> }
+              { isLoggedIn ? <Redirect to='/' /> : <Register setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} 
+              setIsLoanding={setIsLoanding} isLoanding={isLoanding} /> }
             </Route>
             <Route path='*'>
               <Notfound />

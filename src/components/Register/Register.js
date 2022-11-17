@@ -1,18 +1,19 @@
 import { Link, useHistory } from 'react-router-dom';
 import { useFormWithValidation } from '../../utils/Validation';
 import { apiMain } from '../../utils/MainApi';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
-function Register({setLoggedIn}) {
+function Register({setLoggedIn, setCurrentUser, setIsLoanding, isLoanding}) {
 
-    const { values, handleChange, errors, isValid, isNameValid, isEmailValid, isPasswordValid } = useFormWithValidation();
+    const { values, handleChange, errors, isValid, isNameValid, isEmailValid, isPasswordValid, resetForm } = useFormWithValidation();
     const history = useHistory();
     const [error, setError] = useState('')
 
     async function handleSubmit(e){
         e.preventDefault();
         try {
+            setIsLoanding(true);
             await apiMain.register({
                 password: values.password,
                 email: values.email,
@@ -24,9 +25,17 @@ function Register({setLoggedIn}) {
             })
                 .then((data) => {
                     if(data.token){
-                      setLoggedIn(true)
+                        localStorage.setItem('isLoggedIn', true)
+                        localStorage.setItem('isChecked', 'false')
+                        setLoggedIn(true)
                     }
-              })
+                })
+            await apiMain.getUserInfo()
+                .then((response) => {
+                    localStorage.setItem('currentUser', JSON.stringify(response.user))
+                    setCurrentUser(response.user)
+                })
+            setIsLoanding(false);
             history.push('/movies');
         } catch (err) {
             console.log(err.indexOf('500'))
@@ -41,6 +50,10 @@ function Register({setLoggedIn}) {
         }
 
     }
+
+    useEffect(() => {
+        resetForm();
+      }, [resetForm]);
 
     return (
         <div className='register'>
@@ -67,7 +80,7 @@ function Register({setLoggedIn}) {
                     {error || errors.password}</span>
 
                 <button type='submit' className='register__submit'
-                    disabled={ error || errors.name || errors.email || errors.password || !isValid || 
+                    disabled={ isLoanding || error || errors.name || errors.email || errors.password || !isValid || 
                             !values.name || !values.email || !values.password}>Зарегистрироваться</button>
                 <div className='register__login'>
                     Уже зарегистрированы?&nbsp;

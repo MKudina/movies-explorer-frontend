@@ -1,17 +1,18 @@
 import { Link, useHistory } from 'react-router-dom';
 import { useFormWithValidation } from '../../utils/Validation'
 import { apiMain } from '../../utils/MainApi';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-function Login({ setLoggedIn, setCurrentUser }) {
+function Login({ setLoggedIn, setCurrentUser, isLoanding, setIsLoanding }) {
 
-    const { values, handleChange, errors, isValid, isEmailValid, isPasswordValid } = useFormWithValidation();
+    const { values, handleChange, errors, isValid, isEmailValid, isPasswordValid, resetForm } = useFormWithValidation();
     const history = useHistory()
     const [error, setError] = useState('')
 
     async function handleSubmit(e){
         e.preventDefault();
         try {
+            setIsLoanding(true);
             await apiMain.login({
                 password: values.password,
                 email: values.email
@@ -25,8 +26,10 @@ function Login({ setLoggedIn, setCurrentUser }) {
                 })
             await apiMain.getUserInfo()
                 .then((response) => {
-                  setCurrentUser(response.user)
+                    localStorage.setItem('currentUser', JSON.stringify(response.user))
+                    setCurrentUser(response.user)
                 })
+            setIsLoanding(false);
             history.push('/movies');
         } catch(err){
             if (err.indexOf('401') !== -1 || err.indexOf('400') !== -1) {
@@ -39,6 +42,10 @@ function Login({ setLoggedIn, setCurrentUser }) {
             console.log(err);
         }
     }
+
+    useEffect(() => {
+        resetForm();
+      }, [resetForm]);
 
     return (
         <div className='login'>
@@ -54,7 +61,7 @@ function Login({ setLoggedIn, setCurrentUser }) {
                     name='password' id='input-password' minLength="8" onChange={handleChange} required />
                 <span className='login__span-inputs-error'>{ error || errors.password}</span>
                 <button type='submit' className='login__submit' 
-                    disabled={error || errors.email || errors.password || !isValid || !values.email || !values.password}>Войти</button>
+                    disabled={ isLoanding || error || errors.email || errors.password || !isValid || !values.email || !values.password}>Войти</button>
                 <div className='login__login'>
                     Ещё не зарегистрированы?&nbsp;
                     <Link to='/sign-up' className='login__login-link'>
