@@ -3,3 +3,23 @@
     margin: 0px;
     padding: 0px;
 }
+
+.saved-movies__not-found {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 34px;
+    color: #8B8B8B;
+    text-align: center;
+}
+
+.saved-movies__no-movies{
+    margin: 0px auto;
+    padding: 0px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 34px;
+    color: #8B8B8B;
+    text-align: center;
+}

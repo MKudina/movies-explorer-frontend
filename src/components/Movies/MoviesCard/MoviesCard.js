@@ -1,10 +1,9 @@
-function MoviesCard({ movie, saveMovie, deleteMovie }) {
+function MoviesCard({ movie, saveMovie, deleteMovie, isSavesMovies }) {
 
-    const savedMovies = JSON.parse(localStorage.getItem('allSavedMovies'));
-    const isLiked = (
-        savedMovies.length > 0 && savedMovies.some((item) => {
-            return item.nameRU === movie.nameRU;
-        })) || false;
+    const savedMovies = isSavesMovies;    
+    const isLiked = (savedMovies.length > 0 && savedMovies.some((item) => {
+        return item.nameRU === movie.nameRU;
+    })) || false;
     const savedMovie = (
         savedMovies.length > 0 && savedMovies.filter((item) => {
             return item.movieId === movie.id && item;

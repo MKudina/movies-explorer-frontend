@@ -1,27 +1,28 @@
 import { useEffect, useState } from "react";
+import { ADD_NUMBER_FILM_DESCTOP, ADD_NUMBER_FILM_MOBILE, ADD_NUMBER_FILM_TABLET, NUMBER_FILMS_DESCTOP, NUMBER_FILMS_MOBILE, NUMBER_FILMS_TABLET, WIDTH_DESCTOP, WIDTH_TABLET } from "../../../utils/constants";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-function MoviesCardList({ isMovies, saveMovie, deleteMovie }) {
+function MoviesCardList({ isMovies, saveMovie, deleteMovie, isSavesMovies }) {
 
     const [numberOfFilms, setNumberOfFilms] = useState(0)
 
     useEffect(() => {
-        if(window.innerWidth >= 1180){
-            setNumberOfFilms(11);
-        } else if (window.innerWidth >= 768) {
-            setNumberOfFilms(7);
+        if(window.innerWidth >= WIDTH_DESCTOP){
+            setNumberOfFilms(NUMBER_FILMS_DESCTOP);
+        } else if (window.innerWidth >= WIDTH_TABLET) {
+            setNumberOfFilms(NUMBER_FILMS_TABLET);
         } else {
-            setNumberOfFilms(4);
+            setNumberOfFilms(NUMBER_FILMS_MOBILE);
         }
     }, [setNumberOfFilms])
 
     function handleMoreFilms(){
         if(window.innerWidth >= 1180){
-            setNumberOfFilms(numberOfFilms + 4);
+            setNumberOfFilms(numberOfFilms + ADD_NUMBER_FILM_DESCTOP);
         } else if (window.innerWidth >= 768) {
-            setNumberOfFilms(numberOfFilms + 2);
+            setNumberOfFilms(numberOfFilms + ADD_NUMBER_FILM_TABLET);
         } else {
-            setNumberOfFilms(numberOfFilms + 2);
+            setNumberOfFilms(numberOfFilms + ADD_NUMBER_FILM_MOBILE);
         }
     }
 
@@ -32,7 +33,7 @@ function MoviesCardList({ isMovies, saveMovie, deleteMovie }) {
                     return (
                         index <= numberOfFilms && (
                             <MoviesCard movie={movie} key={movie.id} saveMovie={saveMovie}
-                                        deleteMovie={deleteMovie} />
+                                        deleteMovie={deleteMovie} isSavesMovies={isSavesMovies} />
                         )
                     );
                 })}

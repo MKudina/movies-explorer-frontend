@@ -51,3 +51,5 @@
 /* Подключение блока profile */
 
 @import url(./components/Profile/Profile.css);
+
+@import url(./components/SavedMovies/SavedMovies.css);

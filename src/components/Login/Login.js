@@ -19,15 +19,16 @@ function Login({ setLoggedIn, setCurrentUser, isLoanding, setIsLoanding }) {
             })
                 .then((data) => {
                     if(data.token){
-                        localStorage.setItem('isLoggedIn', true)
-                        localStorage.setItem('isChecked', 'false')
-                        setLoggedIn(true)
+                        localStorage.setItem('isLoggedIn', true);
+                        localStorage.setItem('isChecked', 'false');
+                        localStorage.setItem('isCheckedSavedMovie', 'false');
+                        setLoggedIn(true);
                     }
                 })
             await apiMain.getUserInfo()
                 .then((response) => {
-                    localStorage.setItem('currentUser', JSON.stringify(response.user))
-                    setCurrentUser(response.user)
+                    localStorage.setItem('currentUser', JSON.stringify(response.user));
+                    setCurrentUser(response.user);
                 })
             setIsLoanding(false);
             history.push('/movies');

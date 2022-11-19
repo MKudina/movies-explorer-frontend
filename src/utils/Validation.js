@@ -1,5 +1,4 @@
-import { useCallback } from "react";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import isEmail from 'validator/lib/isEmail';
 
 //хук управления формой и валидации формы

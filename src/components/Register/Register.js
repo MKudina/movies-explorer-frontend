@@ -25,9 +25,10 @@ function Register({setLoggedIn, setCurrentUser, setIsLoanding, isLoanding}) {
             })
                 .then((data) => {
                     if(data.token){
-                        localStorage.setItem('isLoggedIn', true)
-                        localStorage.setItem('isChecked', 'false')
-                        setLoggedIn(true)
+                        localStorage.setItem('isLoggedIn', true);
+                        localStorage.setItem('isChecked', 'false');
+                        localStorage.setItem('isCheckedSavedMovie', 'false');
+                        setLoggedIn(true);
                     }
                 })
             await apiMain.getUserInfo()
