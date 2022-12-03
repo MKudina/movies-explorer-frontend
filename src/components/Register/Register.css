@@ -1,0 +1,161 @@
+.register {
+    max-width: 396px;
+    max-height: 700px;
+    margin: 0px auto;
+    padding: 70px 0px 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.register__logo {
+    width: 38px;
+    height: 38px;
+    background-image: url(../../images/Logo.svg);
+    margin: 0px;
+    padding: 0px;
+}
+
+.register__title {
+    margin: 40px 0px;
+    padding: 0px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.register__form {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.register__input {
+    height: 16px;
+    margin: 0px 0px 10px;
+    padding: 15px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: white;
+    background-color: #2F2F2F;
+    border: none;
+    box-sizing: border-box;
+    outline: none;
+    border-radius: 8px;
+}
+
+.register__input:focus {
+    outline: 1px solid #6d6868;
+}
+
+.register__input:hover {
+    outline: 1px solid #6d6868;
+}
+
+.register__input-error {
+    color: red;
+}
+
+.register__input-label {
+    margin-bottom: 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: #8B8B8B;
+}
+
+.register__submit {
+    height: 45px;
+    padding: 0px;
+    margin: 46px 0px 6px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    border: none;
+    background-color: #4285F4;
+    opacity: 0.96;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+
+.register__submit:hover {
+    opacity: .5;
+}
+
+.register__submit:disabled {
+    background-color: #F8F8F8;
+    color: #C2C2C2;
+}
+
+.register__login{
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #8B8B8B;
+}
+
+.register__login-link {
+    text-decoration: none;
+    color:#4285F4;
+    transition: all .5s ease-in-out;
+}
+
+.register__login-link:hover {
+    opacity: .6;
+}
+
+.register__span-inputs-error {
+    min-height: 10px;
+    color: red;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+}
+
+@media screen and (max-width:1023px) {
+    .register {
+        padding: 232px 0px 0px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .register {
+        max-width: 260px;
+        padding: 56px 0px 0px;
+        align-items: center;
+    }
+
+    .register__title {
+        margin: 50px 0px 80px;
+        padding: 0px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 29px;
+    }
+
+    .register__input {
+        width: 230px;
+        height: 16px;
+    }
+
+    .register__submit {
+        margin: 157px 0px 6px;
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    .register__login{
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

@@ -1,0 +1,252 @@
+.header {
+    max-width: 1280px;
+    max-height: 74px;
+    margin: 0px;
+    padding: 18px 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+.header_main {
+    background-color: #073042;
+}
+
+.header__logo {
+    width: 38px;
+    height: 38px;
+    background-image: url(../../images/Logo.svg);
+    margin: 0;
+}
+
+.header__button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    background: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-decoration: none;
+    color: white;
+    transition: all .5s ease-in-out;
+}
+
+.header__button_active {
+    border-bottom: 1px solid white;
+}
+
+.header__button:hover {
+    opacity: .5;
+}
+
+.header__button_register {
+    margin: 0px 30px 0px auto;
+    max-width: 77px;
+}
+
+.header__button_login {
+    width: 76px;
+    height: 32px;
+    color: black;
+    background-color: #3DDC84;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__button_header_movies {
+    margin: 0px 20px 0px auto;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.header__button_header_saved-movies {
+    margin: 0px 50px 0px 0px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.header__button_header_profile {
+    width: 100px;
+    height: 32px;
+    background-color: #313131;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.header__menu-bar-button {
+    display: none;
+    width: 44px;
+    height: 44px;
+    margin: 0px 0px 0px auto;
+    padding: 0px;
+    border: none;
+    background-color: #202020;
+    background-image: url(../../images/HeaderMenuBar.svg);
+    cursor: pointer;
+}
+
+.header__menu-bar-button_active {
+    background-color: #073042;
+}
+
+.header__overlay {
+    width: 100vh;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.header__overlay_active {
+    display: block;
+}
+
+.header__menu-bar {
+    width: 520px;
+    height: 1024px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    right: -520px;
+    background-color: #202020;
+    z-index: 1;
+    transition: right 1s;
+}
+
+.header__menu-bar_active {
+    right: 0px;
+    transition: right 1s;
+}
+
+.header__menu-bar-button-close {
+    width: 22px;
+    height: 22px;
+    margin: 27px 27px 110px auto;
+    border: none;
+    background-color: #202020;
+    background-image: url(../../images/HeaderCross.svg);
+    background-position: center;
+    background-repeat: none;
+    cursor: pointer;
+}
+
+.header__button_menu-bar_main {
+    margin: 0px;
+    padding: 0px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.header__button_menu-bar_movies {
+    margin: 28px 0px;
+    padding: 0px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.header__button_menu-bar_saved-movies {
+    margin: 0px;
+    padding: 0px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.header__button_menu-bar_profile {
+    margin: 621px 0px 90px;
+    width: 100px;
+    height: 32px;
+    background-color: #313131;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+@media screen and (max-width:1023px) {
+    .header {
+        padding: 18px 30px;
+    }
+
+    .header__menu-bar-button {
+        display: block;
+    }
+
+    .header__button_header_movies {
+        display: none;
+    }
+    
+    .header__button_header_saved-movies {
+        display: none;
+    }
+    
+    .header__button_header_profile {
+        display: none;
+    }
+
+    .header__menu-bar {
+        display: flex;
+        right: -520px;
+    }
+
+    .header__menu-bar_active {
+        right: 0px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .header {
+        padding: 18px 14px;
+    }
+
+    .header__button {
+        font-size: 10px;
+
+    }
+
+    .header__button_register {
+        margin: 0px 14px 0px auto;
+    }
+
+    .header__button_login {
+        width: 54px;
+        height: 26px;
+    }
+
+    .header__menu-bar {
+        width: 320px;
+        height: 780;
+        right: -320px;
+    }
+
+    .header__menu-bar_active {
+        right: 0px;
+    }
+}
